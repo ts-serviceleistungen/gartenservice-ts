@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>T.S. Gartenservice – Online Anfrage</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="brand">T.S. SERVICELEISTUNGEN</div>
+    <h1>🌳 Gartenservice – Online Anfrage</h1>
+    <p>Gartenarbeiten bequem online anfragen. Der Termin wird erst nach Prüfung und Bestätigung verbindlich.</p>
+  </header>
+
+  <form id="form" class="card">
+    <section>
+      <h2>1. Gartenarbeiten</h2>
+      <div class="grid">
+        <label><input type="checkbox" name="garden" value="Rasenmähen"> Rasenmähen</label>
+        <label><input type="checkbox" name="garden" value="Rasenkanten schneiden"> Rasenkanten schneiden</label>
+        <label><input type="checkbox" name="garden" value="Heckenschneiden"> Heckenschneiden</label>
+        <label><input type="checkbox" name="garden" value="Sträucher schneiden"> Sträucher schneiden</label>
+        <label><input type="checkbox" name="garden" value="Rückschnitt"> Rückschnitt</label>
+        <label><input type="checkbox" name="garden" value="Unkraut entfernen"> Unkraut entfernen</label>
+        <label><input type="checkbox" name="garden" value="Beete pflegen"> Beete pflegen</label>
+        <label><input type="checkbox" name="garden" value="Laub entfernen"> Laub entfernen</label>
+        <label><input type="checkbox" name="garden" value="Allgemeine Gartenpflege"> Allgemeine Gartenpflege</label>
+        <label><input type="checkbox" name="garden" value="Grünschnitt abtransportieren"> Grünschnitt abtransportieren</label>
+        <label><input type="checkbox" name="garden" value="Sonstige Gartenarbeiten"> Sonstige Gartenarbeiten</label>
+      </div>
+      <div id="areaBox" class="subbox hidden">
+        <label>Rasenfläche
+          <select id="garden_area">
+            <option value="">Bitte auswählen</option>
+            <option value="bis 100 m²">bis 100 m² – 2 Stunden</option>
+            <option value="100–250 m²">100–250 m² – 3 Stunden</option>
+            <option value="250–500 m²">250–500 m² – 4 Stunden</option>
+            <option value="500–1.000 m²">500–1.000 m² – 5 Stunden</option>
+            <option value="über 1.000 m²">über 1.000 m² – nach Besichtigung</option>
+          </select>
+        </label>
+        <label>Zustand
+          <select id="garden_condition">
+            <option value="normal">Normal</option>
+            <option value="stark verwildert">Stark verwildert</option>
+            <option value="sehr stark verwildert">Sehr stark verwildert</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <div id="durationInfo" class="notice">Bitte mindestens eine Gartenarbeit auswählen.</div>
+
+    <section>
+      <h2>2. Terminwunsch</h2>
+      <div class="grid two">
+        <label>Wunschdatum<input id="requested_date" type="date" required></label>
+        <label>Wunschzeit
+          <select id="requested_time" required>
+            <option value="08:00">08:00 Uhr</option>
+            <option value="10:00">10:00 Uhr</option>
+            <option value="13:00">13:00 Uhr</option>
+            <option value="15:00">15:00 Uhr</option>
+          </select>
+        </label>
+      </div>
+      <p class="hint">Bestätigte Fahrzeug- und Gartentermine verwenden denselben Kalender. Bereits bestätigte Zeiten können nicht doppelt gebucht werden.</p>
+    </section>
+
+    <section>
+      <h2>3. Angaben zum Garten</h2>
+      <label>Beschreibung / weitere Angaben<textarea id="details" rows="4" placeholder="Was soll gemacht werden? Gibt es Besonderheiten?"></textarea></label>
+      <label>Fotos vom Garten<input id="photos" type="file" accept="image/*" multiple></label>
+    </section>
+
+    <section>
+      <h2>4. Kontaktdaten</h2>
+      <div class="grid two">
+        <label>Vorname<input id="first_name" required></label>
+        <label>Nachname<input id="last_name" required></label>
+        <label>Telefon<input id="phone" type="tel" required></label>
+        <label>E-Mail<input id="email" type="email" required></label>
+      </div>
+      <label>Nachricht<textarea id="message" rows="3"></textarea></label>
+      <label class="check"><input id="privacy_consent" type="checkbox" required> Ich stimme der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage zu.</label>
+    </section>
+
+    <button type="submit">Gartenanfrage absenden</button>
+    <div id="msg" class="notice hidden"></div>
+  </form>
+</main>
+</body>
+</html>
